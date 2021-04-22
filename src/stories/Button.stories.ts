@@ -10,9 +10,16 @@ export default {
   },
 } as Meta;
 
-const Template: Story<Button> = (args: Button) => ({
-  props: args,
-});
+const Template: Story<Button> = (args: Button) => {
+  // Bugfix here
+  Object.keys(args).forEach((e) => {
+    if (args[e] === undefined) delete args[e];
+  });
+
+  return {
+    props: args,
+  };
+};
 
 export const Primary = Template.bind({});
 Primary.args = {

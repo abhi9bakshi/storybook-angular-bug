@@ -486,7 +486,7 @@
                 "subtype": "variable",
                 "file": "src/stories/Button.stories.ts",
                 "type": "Story<Button>",
-                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                "defaultValue": "(args: Button) => {\n  // Bugfix here\n  Object.keys(args).forEach((e) => {\n    if (args[e] === undefined) delete args[e];\n  });\n\n  return {\n    props: args,\n  };\n}"
             },
             {
                 "name": "Template",
@@ -585,7 +585,7 @@
                     "subtype": "variable",
                     "file": "src/stories/Button.stories.ts",
                     "type": "Story<Button>",
-                    "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                    "defaultValue": "(args: Button) => {\n  // Bugfix here\n  Object.keys(args).forEach((e) => {\n    if (args[e] === undefined) delete args[e];\n  });\n\n  return {\n    props: args,\n  };\n}"
                 }
             ],
             "src/stories/Header.stories.ts": [
